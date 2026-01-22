@@ -19,19 +19,86 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
 
-
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
 
-
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Custom CSS for proper grid layout */
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        
+        .portfolio-item {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            opacity: 1;
+            transform: scale(1);
+            order: 1; /* Default order */
+        }
+        
+        /* Bootstrap grid classes for 3 columns */
+        .col-lg-4 {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+        
+        .col-md-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .col-lg-4 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .col-lg-4, .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        
+        /* Filter states */
+        .portfolio-item.filtered-out {
+            opacity: 0;
+            transform: scale(0.8);
+            height: 0;
+            margin-bottom: 0;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            order: 1000; /* Move filtered items to the end */
+        }
+        
+        .portfolio-item.filtered-in {
+            opacity: 1;
+            transform: scale(1);
+            height: auto;
+            margin-bottom: 30px;
+            padding-right: 15px;
+            padding-left: 15px;
+            order: 1; /* Keep visible items at the beginning */
+        }
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-    <!--  <div id="overlayer"></div>
+    <!-- <div id="overlayer"></div>
         <div class="loader">
           <div class="spinner-border blue" role="status">
             <span class="sr-only">Loading...</span>
@@ -120,7 +187,7 @@
                     </div>
                 </div>
 
-                <div class="row portfolio-grid" data-masonry='{"percentPosition": true}'>
+                <div class="row portfolio-grid">
                     <!-- Safaariya Travel & Tours (Detail Page) -->
                     <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding social-media">
                         <div class="portfolio-card card border-0 shadow-sm">
@@ -149,7 +216,7 @@
                     </div>
 
                     <!-- Gadget Glow (Detail Page) -->
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding social-media logo ">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding social-media logo">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <a href="gadgetglow-details.html" class="portfolio-link">
                                 <div class="portfolio-img-wrapper">
@@ -200,7 +267,7 @@
                     </div>
 
                     <!-- KhaoJee (Detail Page) -->
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding ">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <a href="khajee-details.html" class="portfolio-link">
                                 <div class="portfolio-img-wrapper">
@@ -225,7 +292,7 @@
                     </div>
 
                     <!-- Asgher Soda House (Image Gallery) -->
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item logo branding logo">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item logo branding">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/soda/1.jpeg" class="image-gallery"
@@ -321,7 +388,7 @@
                     </div>
 
                     <!-- Torque  (Image Gallery) -->
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  branding">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/torque/1.jpeg" class="image-gallery"
@@ -344,7 +411,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  branding">
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/3.jpeg" class="image-gallery" data-fancybox="torque-gallery"
@@ -368,7 +436,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Banner">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Banner">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/1.jpeg" class="image-gallery" data-fancybox="game-gallery"
@@ -392,7 +460,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  branding Banner">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding Banner">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/2.jpeg" class="image-gallery"
@@ -417,7 +485,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Thumbnail">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Thumbnail">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/4.jpeg" class="image-gallery" data-fancybox="Thumbnail"
@@ -441,7 +509,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Thumbnail">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Thumbnail">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/5.jpeg" class="image-gallery" data-fancybox="Thumbnail"
@@ -464,7 +532,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Banner">
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Banner">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/6.jpeg" class="image-gallery" data-fancybox="Nike"
@@ -488,7 +557,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  branding">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/7.jpeg" class="image-gallery" data-fancybox="Pizza"
@@ -512,7 +581,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Banner">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Banner">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/8.jpeg" class="image-gallery" data-fancybox="Adidas"
@@ -536,7 +605,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Banner">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Banner">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/9.jpeg" class="image-gallery"
@@ -560,10 +629,10 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Sketching">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Sketching">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
-                                <a href="images/portfolio//11.jpeg" class="image-gallery" data-fancybox="Sketching"
+                                <a href="images/portfolio/11.jpeg" class="image-gallery" data-fancybox="Sketching"
                                     data-caption="Sketching">
                                     <img src="images/portfolio/11.jpeg" class="card-img-top" alt="Sketching">
                                     <div class="portfolio-overlay">
@@ -584,7 +653,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Sketching">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Sketching">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/12.jpeg" class="image-gallery" data-fancybox="Sketching"
@@ -608,7 +677,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item  Sketching">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Sketching">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/13.jpeg" class="image-gallery" data-fancybox="Sketching"
@@ -633,7 +702,7 @@
                     </div>
 
                     <!-- Ahram Ahsan (Image Gallery) -->
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item ">
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item">
                         <div class="portfolio-card card border-0 shadow-sm">
                             <div class="portfolio-img-wrapper">
                                 <a href="images/portfolio/anaam hussain/1.jpeg" class="image-gallery"
@@ -663,8 +732,145 @@
                                         data-fancybox="ahram-gallery"></a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
+                    <!-- Bhukoor (Image Gallery) -->
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item branding">
+                        <div class="portfolio-card card border-0 shadow-sm">
+                            <div class="portfolio-img-wrapper">
+                                <a href="images/portfolio/14.jpeg" class="image-gallery" data-fancybox="bhukoor-gallery" data-caption="Bhukoor Design">
+                                    <img src="images/portfolio/14.jpeg" class="card-img-top" alt="Bhukoor">
+                                    <div class="portfolio-overlay">
+                                        <div class="overlay-content">
+                                            <h5>View Gallery</h5>
+                                            <span class="icon-photo2"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-1">Bhukoor</h5>
+                                <p class="card-text text-muted small mb-2">Traditional Packaging Design</p>
+                                <div class="portfolio-tags">
+                                    <span class="badge badge-primary">Branding</span>
+                                    <span class="badge badge-secondary">Packaging</span>
+                                </div>
+                                <div class="mt-2">
+                                    <a href="images/portfolio/14.jpeg" class="btn btn-sm btn-outline-secondary mr-1" data-fancybox="bhukoor-gallery">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Chow and Henu Card (Image Gallery) -->
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item social-media">
+                        <div class="portfolio-card card border-0 shadow-sm">
+                            <div class="portfolio-img-wrapper">
+                                <a href="images/portfolio/15.jpeg" class="image-gallery" data-fancybox="chowhenu-gallery" data-caption="Chow & Henu Card Design">
+                                    <img src="images/portfolio/15.jpeg" class="card-img-top" alt="Chow & Henu Card">
+                                    <div class="portfolio-overlay">
+                                        <div class="overlay-content">
+                                            <h5>View Gallery</h5>
+                                            <span class="icon-photo2"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-1">Chow & Henu Card</h5>
+                                <p class="card-text text-muted small mb-2">Social Media Card Design</p>
+                                <div class="portfolio-tags">
+                                    <span class="badge badge-primary">Social Media</span>
+                                    <span class="badge badge-secondary">Card Design</span>
+                                </div>
+                                <div class="mt-2">
+                                    <a href="images/portfolio/15.jpeg" class="btn btn-sm btn-outline-secondary mr-1" data-fancybox="chowhenu-gallery">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnail (Image Gallery) -->
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Thumbnail">
+                        <div class="portfolio-card card border-0 shadow-sm">
+                            <div class="portfolio-img-wrapper">
+                                <a href="images/portfolio/16.jpeg" class="image-gallery" data-fancybox="thumbnail16-gallery" data-caption="YouTube Thumbnail Design">
+                                    <img src="images/portfolio/16.jpeg" class="card-img-top" alt="Thumbnail Design">
+                                    <div class="portfolio-overlay">
+                                        <div class="overlay-content">
+                                            <h5>View Gallery</h5>
+                                            <span class="icon-photo2"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-1">Thumbnail Design</h5>
+                                <p class="card-text text-muted small mb-2">YouTube Thumbnail Creation</p>
+                                <div class="portfolio-tags">
+                                    <span class="badge badge-primary">Thumbnail</span>
+                                    <span class="badge badge-secondary">YouTube</span>
+                                </div>
+                                <div class="mt-2">
+                                    <a href="images/portfolio/16.jpeg" class="btn btn-sm btn-outline-secondary mr-1" data-fancybox="thumbnail16-gallery">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Autumn Design 1 (Image Gallery) -->
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Banner">
+                        <div class="portfolio-card card border-0 shadow-sm">
+                            <div class="portfolio-img-wrapper">
+                                <a href="images/portfolio/17.jpeg" class="image-gallery" data-fancybox="autumn-gallery" data-caption="Autumn Theme Design">
+                                    <img src="images/portfolio/17.jpeg" class="card-img-top" alt="Autumn Design">
+                                    <div class="portfolio-overlay">
+                                        <div class="overlay-content">
+                                            <h5>View Gallery</h5>
+                                            <span class="icon-photo2"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-1">Autumn Theme</h5>
+                                <p class="card-text text-muted small mb-2">Seasonal Banner Design</p>
+                                <div class="portfolio-tags">
+                                    <span class="badge badge-primary">Banner</span>
+                                    <span class="badge badge-secondary">Seasonal</span>
+                                </div>
+                                <div class="mt-2">
+                                    <a href="images/portfolio/17.jpeg" class="btn btn-sm btn-outline-secondary mr-1" data-fancybox="autumn-gallery">View More</a>
+                                    <a href="images/portfolio/18.jpeg" class="d-none" data-fancybox="autumn-gallery"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Autumn Design 2 (Image Gallery) -->
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item Banner">
+                        <div class="portfolio-card card border-0 shadow-sm">
+                            <div class="portfolio-img-wrapper">
+                                <a href="images/portfolio/18.jpeg" class="image-gallery" data-fancybox="autumn2-gallery" data-caption="Autumn Theme Design Variation">
+                                    <img src="images/portfolio/18.jpeg" class="card-img-top" alt="Autumn Design Variation">
+                                    <div class="portfolio-overlay">
+                                        <div class="overlay-content">
+                                            <h5>View Gallery</h5>
+                                            <span class="icon-photo2"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-1">Autumn Theme Variation</h5>
+                                <p class="card-text text-muted small mb-2">Seasonal Design Variation</p>
+                                <div class="portfolio-tags">
+                                    <span class="badge badge-primary">Banner</span>
+                                    <span class="badge badge-secondary">Seasonal</span>
+                                </div>
+                                <div class="mt-2">
+                                    <a href="images/portfolio/18.jpeg" class="btn btn-sm btn-outline-secondary mr-1" data-fancybox="autumn2-gallery">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -673,6 +879,107 @@
             </div>
         </div>
     </div> <!-- END .site-section -->
+    
+<!-- BTS Section - Same style as portfolio -->
+<div class="site-section" id="bts-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-7 section-title text-center mx-auto">
+                <span class="sub-title mb-2 d-block">Behind The Scenes</span>
+                <h2 class="title blue mb-3">Our Creative Process</h2>
+                <p class="lead">A glimpse into our design studio and workflow</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- BTS Image 1 -->
+            <div class="col-lg-3 col-md-6 mb-4 ">
+                <div class="portfolio-card card border-0 shadow-sm">
+                    <div class="portfolio-img-wrapper">
+                        <a href="images/pics/2.jpeg" class="image-gallery" data-fancybox="bts-gallery" data-caption="Studio Workspace">
+                            <img src="images/pics/2.jpeg" class="card-img-top" alt="BTS - Studio Workspace">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>View Image</h5>
+                                    <span class="icon-photo2"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BTS Image 2 -->
+            <div class="col-lg-3 col-md-6 mb-4 ">
+                <div class="portfolio-card card border-0 shadow-sm">
+                    <div class="portfolio-img-wrapper">
+                        <a href="images/pics/3.jpeg" class="image-gallery" data-fancybox="bts-gallery" data-caption="Design Process">
+                            <img src="images/pics/3.jpeg" class="card-img-top" alt="BTS - Design Process">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>View Image</h5>
+                                    <span class="icon-photo2"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BTS Image 3 -->
+            <div class="col-lg-3 col-md-6 mb-4 ">
+                <div class="portfolio-card card border-0 shadow-sm">
+                    <div class="portfolio-img-wrapper">
+                        <a href="images/pics/4.jpeg" class="image-gallery" data-fancybox="bts-gallery" data-caption="Team Collaboration">
+                            <img src="images/pics/4.jpeg" class="card-img-top" alt="BTS - Team Collaboration">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>View Image</h5>
+                                    <span class="icon-photo2"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BTS Image 5 -->
+            <div class="col-lg-3 col-md-6 mb-4 ">
+                <div class="portfolio-card card border-0 shadow-sm">
+                    <div class="portfolio-img-wrapper">
+                        <a href="images/pics/5.jpeg" class="image-gallery" data-fancybox="bts-gallery" data-caption="Final Touches">
+                            <img src="images/pics/5.jpeg" class="card-img-top" alt="BTS - Final Touches">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>View Image</h5>
+                                    <span class="icon-photo2"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BTS Image 4 -->
+            <div class="col-lg-3 col-md-6 mb-4 ">
+                <div class="portfolio-card card border-0 shadow-sm">
+                    <div class="portfolio-img-wrapper">
+                        <a href="images/pics/6.jpeg" class="image-gallery" data-fancybox="bts-gallery" data-caption="Final Touches">
+                            <img src="images/pics/6.jpeg" class="card-img-top" alt="BTS - Final Touches">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>View Image</h5>
+                                    <span class="icon-photo2"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
     <footer class="site-footer">
         <div class="container">
           <div class="row">
@@ -717,11 +1024,7 @@
                   <a href="tel+923089870647" class="text-light">+92 308 9870647</a>
                 </span><br>
                 <span class="text-light">
-                  <a href="tel+923354608540
-  
-              " class="text-light">+92 335 4608540
-  
-                  </a>
+                  <a href="tel+923354608540" class="text-light">+92 335 4608540</a>
                 </span>
               </div>
               <div class="mb-3">
@@ -760,64 +1063,92 @@
         </div>
       </footer>
     </div>
+    
     <script>
-      // Portfolio Filtering
-      document.addEventListener('DOMContentLoaded', function () {
-        // Initialize Masonry
-        var grid = document.querySelector('.portfolio-grid');
-        if (grid) {
-          var masonry = new Masonry(grid, {
-            itemSelector: '.portfolio-item',
-            percentPosition: true,
-            transitionDuration: '0.3s'
-          });
-        }
-  
-        // Filter functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-  
-        filterButtons.forEach(button => {
-          button.addEventListener('click', function () {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            this.classList.add('active');
-  
-            const filterValue = this.getAttribute('data-filter');
-  
-            portfolioItems.forEach(item => {
-              if (filterValue === '*' || item.classList.contains(filterValue.replace('.', ''))) {
-                item.style.display = 'block';
-              } else {
-                item.style.display = 'none';
-              }
-            });
-  
-            // Re-layout Masonry after filtering
-            if (masonry) {
-              masonry.layout();
+        document.addEventListener('DOMContentLoaded', function () {
+            // Simple filtering function that maintains grid order
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            let currentFilter = '*';
+            
+            // Function to reorder items for proper grid layout
+            function reorderItems() {
+                const visibleItems = [];
+                const hiddenItems = [];
+                
+                // Separate visible and hidden items
+                portfolioItems.forEach(item => {
+                    if (currentFilter === '*' || item.classList.contains(currentFilter.replace('.', ''))) {
+                        visibleItems.push(item);
+                    } else {
+                        hiddenItems.push(item);
+                    }
+                });
+                
+                // Reorder all items - visible first, then hidden
+                const portfolioGrid = document.querySelector('.portfolio-grid');
+                const allItems = [...visibleItems, ...hiddenItems];
+                
+                // Re-append items in new order
+                allItems.forEach(item => {
+                    portfolioGrid.appendChild(item);
+                });
             }
-          });
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    currentFilter = filterValue;
+                    
+                    // First hide all items with animation
+                    portfolioItems.forEach(item => {
+                        if (filterValue === '*' || item.classList.contains(filterValue.replace('.', ''))) {
+                            // Item should be visible
+                            item.classList.remove('filtered-out');
+                            item.classList.add('filtered-in');
+                        } else {
+                            // Item should be hidden
+                            item.classList.add('filtered-out');
+                            item.classList.remove('filtered-in');
+                        }
+                    });
+                    
+                    // Reorder items after a short delay to allow CSS transition
+                    setTimeout(() => {
+                        reorderItems();
+                    }, 50);
+                });
+            });
+            
+            // Initialize with all items visible
+            reorderItems();
+            
+            // Fancybox initialization
+            if (typeof $ !== 'undefined') {
+                $('[data-fancybox]').fancybox({
+                    buttons: [
+                        "zoom",
+                        "share",
+                        "slideShow",
+                        "fullScreen",
+                        "download",
+                        "thumbs",
+                        "close"
+                    ],
+                    loop: true,
+                    protect: true
+                });
+            }
+            
+            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
-  
-        // Fancybox initialization
-        $('[data-fancybox]').fancybox({
-          buttons: [
-            "zoom",
-            "share",
-            "slideShow",
-            "fullScreen",
-            "download",
-            "thumbs",
-            "close"
-          ],
-          loop: true,
-          protect: true
-        });
-      });
-      document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
+    
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -828,11 +1159,9 @@
     <script src="js/stickyfill.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
-  
+    
     <script src="js/jquery.fancybox.min.js"></script>
     <script src="js/main.js"></script>
-  
-  
-  </body>
-  
-  </html>
+    
+</body>
+</html>
