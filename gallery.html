@@ -673,63 +673,150 @@
             </div>
         </div>
     </div> <!-- END .site-section -->
+    <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <!-- About Section -->
+            <div class="col-lg-4 mb-4">
+              <div class="mb-4">
+                <img src="images/TTG.png" alt="TechTrend Logo" class="img-fluid mb-3" style="max-width: 100px;">
+                <h4 class="text-white mb-3">TechTrend Graphics<span class="blue">.</span></h4>
+                <p class="text-light">We create stunning websites and graphic designs that help your brand stand out with
+                  creativity and precision.</p>
+              </div>
+            </div>
+  
+            <!-- Quick Links -->
+            <div class="col-lg-4 mb-4">
+              <h5 class="text-white mb-4">Quick Links</h5>
+              <div class="d-flex flex-wrap">
+                <ul class="list-unstyled mr-5">
+                  <li class="mb-2"><a href="#home-section" class="text-light footer-link">Home</a></li>
+                  <li class="mb-2"><a href="#services-section" class="text-light footer-link">Services</a></li>
+                  <li class="mb-2"><a href="#about-section" class="text-light footer-link">About</a></li>
+                  <li class="mb-2"><a href="#what-we-do-section" class="text-light footer-link">Team</a></li>
+                </ul>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><a href="#portfolio-section" class="text-light footer-link">Works</a></li>
+                  <li class="mb-2"><a href="#testimonials" class="text-light footer-link">Testimonials</a></li>
+                  <li class="mb-2"><a href="#studio-section" class="text-light footer-link">Portfolio</a></li>
+                  <li class="mb-2"><a href="#contact-section" class="text-light footer-link">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+  
+            <!-- Contact Info -->
+            <div class="col-lg-4 mb-4">
+              <h5 class="text-white mb-4">Contact Info</h5>
+              <div class="mb-3">
+                <span class="icon-phone blue mr-2"></span>
+                <span class="text-light">
+                  <a href="tel+923305844553" class="text-light">+92 330 5844553</a>
+                </span><br>
+                <span class="text-light">
+                  <a href="tel+923089870647" class="text-light">+92 308 9870647</a>
+                </span><br>
+                <span class="text-light">
+                  <a href="tel+923354608540
+  
+              " class="text-light">+92 335 4608540
+  
+                  </a>
+                </span>
+              </div>
+              <div class="mb-3">
+                <span class="icon-envelope blue mr-2"></span>
+                <span class="text-light">
+                  <a href="mailto:techtrendgraphic786@gmail.com" class="text-light">techtrendgraphic786@gmail.com</a>
+                </span>
+              </div>
+              <div class="mb-4">
+                <span class="icon-location blue mr-2"></span>
+                <span class="text-light">Karachi, Pakistan</span>
+              </div>
+  
+              <!-- Social Icons -->
+              <div class="social-icons mt-4">
+                <a href="https://instagram.com/tech.trend_graphics" target="_blank" class="social-icon mr-3">
+                  <span class="icon-instagram"></span>
+                </a>
+  
+                <a href="https://instagram.com/TechTrend Graphics" class="social-icon mr-3">
+                  <span class="icon-facebook"></span>
+                </a>
+  
+              </div>
+            </div>
+          </div>
+  
+          <!-- Copyright -->
+          <div class="row pt-4 border-top mt-4">
+            <div class="col-12 text-center">
+              <p class="text-light mb-0">
+                &copy; <span id="current-year"></span> TechTrend Graphics. All rights reserved..
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
     <script>
-        // Portfolio Filtering
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize Masonry
-            var grid = document.querySelector('.portfolio-grid');
-            if (grid) {
-                var masonry = new Masonry(grid, {
-                    itemSelector: '.portfolio-item',
-                    percentPosition: true,
-                    transitionDuration: '0.3s'
-                });
+      // Portfolio Filtering
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Masonry
+        var grid = document.querySelector('.portfolio-grid');
+        if (grid) {
+          var masonry = new Masonry(grid, {
+            itemSelector: '.portfolio-item',
+            percentPosition: true,
+            transitionDuration: '0.3s'
+          });
+        }
+  
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+  
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function () {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+  
+            const filterValue = this.getAttribute('data-filter');
+  
+            portfolioItems.forEach(item => {
+              if (filterValue === '*' || item.classList.contains(filterValue.replace('.', ''))) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+  
+            // Re-layout Masonry after filtering
+            if (masonry) {
+              masonry.layout();
             }
-
-            // Filter functionality
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    const filterValue = this.getAttribute('data-filter');
-
-                    portfolioItems.forEach(item => {
-                        if (filterValue === '*' || item.classList.contains(filterValue.replace('.', ''))) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-
-                    // Re-layout Masonry after filtering
-                    if (masonry) {
-                        masonry.layout();
-                    }
-                });
-            });
-
-            // Fancybox initialization
-            $('[data-fancybox]').fancybox({
-                buttons: [
-                    "zoom",
-                    "share",
-                    "slideShow",
-                    "fullScreen",
-                    "download",
-                    "thumbs",
-                    "close"
-                ],
-                loop: true,
-                protect: true
-            });
+          });
         });
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+  
+        // Fancybox initialization
+        $('[data-fancybox]').fancybox({
+          buttons: [
+            "zoom",
+            "share",
+            "slideShow",
+            "fullScreen",
+            "download",
+            "thumbs",
+            "close"
+          ],
+          loop: true,
+          protect: true
+        });
+      });
+      document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -741,11 +828,11 @@
     <script src="js/stickyfill.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
-
+  
     <script src="js/jquery.fancybox.min.js"></script>
     <script src="js/main.js"></script>
-
-
-</body>
-
-</html>
+  
+  
+  </body>
+  
+  </html>
